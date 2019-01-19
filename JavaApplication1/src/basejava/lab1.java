@@ -1,10 +1,6 @@
 package basejava;
 
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Graphics;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,18 +21,19 @@ public class lab1 extends Frame implements ActionListener {
     Button b1 = new Button("Exit");
     Button b2 = new Button("Create object");
     Button b3 = new Button("Show object");
+    Label lb = new Label("Introduction in Java");//добавлено
+    TextField tf = new TextField();//добавлено
 
-    public lab1() throws HeadlessException {
-        setLayout(null);
-        add(b1);
-        add(b2);
-        add(b3);
+    public lab1() {
+        setLayout(new BorderLayout());//изменено
+        add(tf, BorderLayout.SOUTH);//добавлено
+        add(b1, BorderLayout.WEST);//изменено
+        add(b2, BorderLayout.CENTER);//изменено
+        add(b3, BorderLayout.EAST);//изменено
+        add(lb, BorderLayout.NORTH);//добавлено
         b1.addActionListener(this);
         b2.addActionListener(this);
         b3.addActionListener(this);
-        b1.setBounds(200, 50, 100, 20);
-        b2.setBounds(200, 80, 100, 20);
-        b3.setBounds(200, 110, 100, 20);
         setBackground(new Color(120, 200, 120));
     }
 
@@ -51,8 +48,6 @@ public class lab1 extends Frame implements ActionListener {
         } else {
             if (e.getSource() == b2) {
                 if (book == null) {
-//                    String s = "Pinoccio";
-//                    int z = 200;
                     book = new Book("Pinoccio", 200);
                 } else {
                     System.out.println("The object already exists");
@@ -60,14 +55,7 @@ public class lab1 extends Frame implements ActionListener {
             } else {
                 if (e.getSource() == b3) {
                     if (book != null) {
-                        Graphics g = getGraphics();
-                        g.drawString(this.showTitle(book), 200, 200);
-//                        this.setForeground(new Color(250,0,0));
-//                        Font fnt = new Font("Courier", Font.BOLD, 24);
-//                        g.setFont(fnt);
-//                        setForeground(new Color(250, 0, 0));
-
-//                        g.drawString(book.title.toUpperCase(), 200, 200);
+                        tf.setText(book.title.toUpperCase());//добавлено
                     }
                 }
             }
