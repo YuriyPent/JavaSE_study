@@ -10,10 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
+
+@SuppressWarnings("serial")
 public class Picture1 extends Frame implements ActionListener {
 
     Button exit = new Button("Exit");
-    private Ellipse2D.Double circle = new Ellipse2D.Double(20, 30, 100, 100);
+    private final Ellipse2D.Double circle = new Ellipse2D.Double(20, 30, 100, 100);
 
     @SuppressWarnings("deprecation")
     Picture1() {
@@ -21,6 +23,7 @@ public class Picture1 extends Frame implements ActionListener {
         setBackground(Color.yellow);
     }
 
+    @Override
     public void paint(Graphics g) {
         //преобразовать к классу Graphics2D переменную Graphics
         Graphics2D g2 = (Graphics2D) g;
@@ -34,6 +37,7 @@ public class Picture1 extends Frame implements ActionListener {
         exit.addActionListener(this);
     }
 
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) {
         Picture1 p = new Picture1();
         p.resize(150, 180);
